@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2018 Google LLC.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,24 @@
 <!-- This feature module only contains a single assets file relevant to the Android app. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.google.android.samples.dynamicfeatures.ondemand.assets">
+
+    <dist:module
+        dist:title="@string/module_assets"
+        tools:ignore="ExtraText">// user facing title to confirm if user wants to instal module
+        <dist:delivery>
+            /**
+            specify you want this module to be on demand delivery.
+            If you dont specify htis, the feature is available when user first downloads and
+            installs the app
+            **/
+            <dist:on-demand />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+        // specify you want module to be available to devices running kitkat
+        // and lower and include in it multi APKs when dist:include is set to true.
+    </dist:module>
 
     <!-- This feature module doesn't contain code. -->
     <application android:hasCode="false" />
